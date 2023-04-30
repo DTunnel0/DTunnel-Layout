@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>DTunnel</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #131a2d;
+        }
+
+        .container {
+            max-width: 350px;
+        }
+
+        .bg-dark-1 {
+            background-color: #131a2d;
+        }
+
+        .btn-dark {
+            background-color: #0f1524 !important;
+            border: none;
+        }
+
+        .input-group,
+        .form-control,
+        .input-group-text {
+            background-color: #0f1524 !important;
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: #FFF;
+        }
+
+        .form-control:focus {
+            color: #FFF;
+            outline: none;
+            box-shadow: none;
+        }
+
+        .input-group-text {
+            padding-right: 0;
+        }
+
+        .card {
+            background-color: #131a2d;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card border-0 p-2 shadow">
+            <div class="input-group mb-2" id="config">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                        class="bi bi-file-medical" viewBox="0 0 16 16">
+                        <path
+                            d="M8.5 4.5a.5.5 0 0 0-1 0v.634l-.549-.317a.5.5 0 1 0-.5.866L7 6l-.549.317a.5.5 0 1 0 .5.866l.549-.317V7.5a.5.5 0 1 0 1 0v-.634l.549.317a.5.5 0 1 0 .5-.866L9 6l.549-.317a.5.5 0 1 0-.5-.866l-.549.317V4.5zM5.5 9a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 2a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
+                        <path
+                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z" />
+                    </svg>
+                </span>
+                <input class="form-control" type="text" value="CONFIGURAÇÃO" readonly title="configurações"
+                    id="inputConfig" />
+                <span class="input-group-text me-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                        class="bi bi-arrow-bar-down" viewBox="0 0 16 16">
+                        <path
+                            d="M1 3.5a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13a.5.5 0 0 1-.5-.5zM8 6a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 0 1 .708-.708L7.5 12.293V6.5A.5.5 0 0 1 8 6z" />
+                    </svg>
+                </span>
+            </div>
+            <div class="input-group input input-auth mb-2">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                        class="bi bi-person" viewBox="0 0 16 16">
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z" />
+                    </svg>
+                </span>
+                <input class="form-control" type="text" placeholder="usuario" id="user" />
+            </div>
+            <div class="input-group input input-auth mb-2">
+                <span class="input-group-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-key"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z" />
+                        <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                    </svg>
+                </span>
+                <input class="form-control" type="text" placeholder="senha" id="password" />
+            </div>
+            <button class="btn btn-dark w-100 mb-3" id="start-stop">INICIAR VPN</button>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-dark" id="sync">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                        <path
+                            d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                        <path fill-rule="evenodd"
+                            d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" id="logger">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-file-earmark-text" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 7a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5z" />
+                        <path
+                            d="M9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.5L9.5 0zm0 1v2A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark d-none" id="webview">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-globe" viewBox="0 0 16 16">
+                        <path
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.068.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855.173-.324.33-.682.468-1.068H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4h2.355z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" id="checkUser">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-calendar2-day" viewBox="0 0 16 16">
+                        <path
+                            d="M4.684 12.523v-2.3h2.261v-.61H4.684V7.801h2.464v-.61H4v5.332h.684zm3.296 0h.676V9.98c0-.554.227-1.007.953-1.007.125 0 .258.004.329.015v-.613a1.806 1.806 0 0 0-.254-.02c-.582 0-.891.32-1.012.567h-.02v-.504H7.98v4.105zm2.805-5.093c0 .238.192.425.43.425a.428.428 0 1 0 0-.855.426.426 0 0 0-.43.43zm.094 5.093h.672V8.418h-.672v4.105z" />
+                        <path
+                            d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z" />
+                        <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" data-bs-target="#youtubeModal" data-bs-toggle="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-youtube" viewBox="0 0 16 16">
+                        <path
+                            d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z" />
+                    </svg>
+                </button>
+                <button class="btn btn-dark" data-bs-target="#mp3Modal" data-bs-toggle="modal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-music-player" viewBox="0 0 16 16">
+                        <path
+                            d="M4 3a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V3zm1 0v3h6V3H5zm3 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                        <path d="M11 11a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm-3 2a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                        <path
+                            d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H4z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="card my-3 w-100 text-center border-0 p-2 shadow text-light fs-5 text-uppercase fw-bold" id="state">
+        </div>
+    </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="checkUserModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h1 class="modal-title fs-5 chk-title text-light"></h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="fs-5 mb-0 chk-message text-light"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="errorModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h1 class="modal-title fs-5 err-title text-light"></h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <p class="fs-5 mb-0 err-message text-light"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="youtubeModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-header border-bottom-0 py-3">
+                    <h1 class="modal-title fs-5 err-title text-light"></h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body ratio rounded-bottom-3" style="height: 600px;">
+                    <iframe class="rounded-bottom-3" src="https://www.youtube.com/embed/y_FkQ2jHd1c"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="mp3Modal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-header border-bottom-0 py-3">
+                    <h1 class="modal-title fs-5 err-title text-light"></h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body ratio rounded-bottom-3" style="height: 600px;">
+                    <iframe class="rounded-bottom-3" src="https://www.palcomp3.com.br/" title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="loggerModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-body p-1 text-center">
+                    <ul class="list-group bg-transparent overflow-y-auto logger-content" style="max-height: 600px;">
+                    </ul>
+                </div>
+                <div class="modal-footer flex-nowrap p-0">
+                    <button type="button" class="btn btn-lg text-light w-100 clear-logger">LIMPAR</button>
+                    <button type="button" class="btn btn-lg text-light w-100" data-bs-dismiss="modal">FECHAR</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade " tabindex="-1" role="dialog" id="configModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow" style="background-color: #171e2e;">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h1 class="modal-title fs-5 text-white">CONFIGURAÇÕES</h1>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-1 text-center">
+                    <ul class="list-group bg-transparent overflow-y-auto config-body" style="max-height: 600px;">
+                        <li class="list-group-item bg-transparent text-white border-0">
+                            <p>CATEGORIA</p>
+                            <ul class="list-group bg-transparent overflow-y-auto text-start">
+                                <li
+                                    class="list-group-item d-flex bg-transparent text-white border-0 border-bottom rounded-0">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/3686/3686811.png" width="40"
+                                        height="40">
+                                    <div class="d-flex flex-column ms-2 w-100">
+                                        <span>CONFIG 01</span>
+                                        <span>DESC 01</span>
+                                    </div>
+                                    <div class="d-flex flex-column ms-2 w-100">
+                                        <span class="text-end">CONFIG_MODE</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <script>
+        const config = document.querySelector('#config')
+        const inputConfig = document.querySelector('#inputConfig')
+        const inputUser = document.querySelector('#user')
+        const inputPassword = document.querySelector('#password')
+        const sync = document.querySelector('#sync')
+        const logger = document.querySelector('#logger')
+        const checkUser = document.querySelector('#checkUser')
+
+        const startStopVpn = document.querySelector('#start-stop')
+        const stateStatus = document.querySelector('#state')
+
+        const loggerModal = new bootstrap.Modal(document.querySelector('#loggerModal'));
+        const checkUserModal = new bootstrap.Modal(document.querySelector('#checkUserModal'));
+        const errorModal = new bootstrap.Modal(document.querySelector('#errorModal'));
+        const configModal = new bootstrap.Modal(document.querySelector('#configModal'));
+
+        const clearLogger = document.querySelector('.clear-logger');
+
+        config.addEventListener('click', e => showConfigsModal())
+        inputUser.addEventListener('input', e => DtUsername.set(e.target.value))
+        inputPassword.addEventListener('input', e => DtPassword.set(e.target.value))
+
+        sync.addEventListener('click', e => DtStartAppUpdate.execute())
+        logger.addEventListener('click', e => loggerModal.show())
+        checkUser.addEventListener('click', e => DtStartCheckUser.execute())
+
+        startStopVpn.addEventListener('click', (e) => {
+            if (DtGetVpnState.execute() != 'DISCONNECTED') {
+                DtExecuteVpnStop.execute()
+            } else {
+                DtExecuteVpnStart.execute()
+            }
+        })
+        clearLogger.addEventListener('click', () => DtClearLogs.execute());
+
+        const dtConfigClickListener = () => {
+            const data = JSON.parse(window?.DtGetDefaultConfig?.execute() || `{ "auth": {} }`)
+
+            inputConfig.value = data.name ?? 'CONFIGURAÇÃO DE OPERADORAS'
+
+            inputUser.parentElement.style.display = !data.auth.username ? 'flex' : 'none';
+            inputPassword.parentElement.style.display = !data.auth.password ? 'flex' : 'none';
+        }
+
+        const dtVpnStateListener = state => {
+            stateStatus.innerHTML = window?.DtTranslateText?.execute('LBL_STATE_' + state) ?? 'UNKNOWN';
+            startStopVpn.innerHTML = state != 'DISCONNECTED' ? 'PARAR VPN' : 'INICIAR VPN'
+            document.querySelectorAll('.input-auth').forEach(item => {
+                if (state != 'DISCONNECTED') {
+                    item.children[1].setAttribute('readonly', 'true');
+                } else {
+                    item.children[1].removeAttribute('readonly');
+                }
+            });
+        }
+
+        const dtCheckUserModelListener = model => {
+            const data = JSON.parse(model);
+            const message = 'Nome: ' + data.username + '<br>Expira em: ' + data.expiration_date
+
+            checkUserModal._element.querySelector('.chk-title').textContent = 'Olá, ' + data.username.toUpperCase();
+            checkUserModal._element.querySelector('.chk-message').innerHTML = message;
+            checkUserModal.show()
+        }
+
+        const dtMessageErrorListener = message => {
+            const data = JSON.parse(message);
+            errorModal._element.querySelector('.err-title').textContent = data.title;
+            errorModal._element.querySelector('.err-message').innerHTML = data.content;
+            errorModal.show()
+        }
+
+        const dtOnNewLogListener = () => {
+            const mock = [];
+            for (let i = 0; i < 30; i++) {
+                mock.push({ 'TIME': 'MESSAGE ' + i });
+            }
+
+            const log = window?.DtGetLogs?.execute() || JSON.stringify(mock);
+            const data = JSON.parse(log);
+
+            let content = '';
+            data.forEach(item => {
+                content += '<li class="list-group-item fs-6 bg-transparent text-white p-0 border-0 text-start ms-2 text-wrap">';
+                content += Object.keys(item)[0] + " " + item[Object.keys(item)]
+                content += '</li>';
+            })
+
+            loggerModal._element.querySelector('.logger-content').innerHTML = content;
+            const listGroup = loggerModal._element.querySelector('.list-group');
+            listGroup.scrollTo(0, listGroup.scrollHeight);
+        }
+
+        const showConfigsModal = () => {
+            const mock = '[{"sorter":1,"color":"#6D08041C","name":"VIVO","id":1393,"items":[{"mode":"SSH_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"VIVO 01","icon":"https://bafkreiasujakkrfjg37yvzcu467gmi2fwrekbicmjccgi4sh5qnsnrpuu4.ipfs.w3s.link","id":11803,"status":"ACTIVE"},{"mode":"SSH_DIRECT","sorter":2,"tlsVersion":"TLSv1.2","name":"VIVO 02","icon":"https://bafkreiasujakkrfjg37yvzcu467gmi2fwrekbicmjccgi4sh5qnsnrpuu4.ipfs.w3s.link","id":28627,"status":"ACTIVE"},{"mode":"OVPN_PROXY","sorter":23,"tlsVersion":"TLSv1.2","name":"VIVO 03","icon":"https://bafkreiasujakkrfjg37yvzcu467gmi2fwrekbicmjccgi4sh5qnsnrpuu4.ipfs.w3s.link","id":30001,"status":"ACTIVE"}]},{"sorter":2,"color":"#6D08041C","name":"TIM","id":1846,"items":[{"mode":"SSH_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"TIM 01","icon":"https://bafkreidbdfghzmuotowc5z46cct7tq5z4xaebh36qfrjuz7ssp4xuw6z44.ipfs.w3s.link","id":26295,"status":"ACTIVE"}]},{"sorter":4,"color":"#80000000","name":"DEV","id":3310,"items":[{"mode":"SSH_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"DEV. TEST","icon":"https://bafkreidbdfghzmuotowc5z46cct7tq5z4xaebh36qfrjuz7ssp4xuw6z44.ipfs.w3s.link","id":29997,"status":"ACTIVE"},{"mode":"OVPN_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"DEV. TEST 2","icon":"https://bafkreidbdfghzmuotowc5z46cct7tq5z4xaebh36qfrjuz7ssp4xuw6z44.ipfs.w3s.link","id":29998,"status":"ACTIVE"}]}]'
+            const data = JSON.parse(window?.DtGetConfigs?.execute() || mock)
+            const body = configModal._element.querySelector('.config-body')
+            body.innerHTML = ''
+
+            data.forEach(category => {
+                const categoryElement = document.createElement('li')
+                categoryElement.classList.add('list-group-item', 'bg-transparent', 'text-white', 'border-0', 'mb-1', 'rounded-1', 'px-1')
+                categoryElement.innerHTML = `<span class="bg-dark-1 w-100 d-block p-1 rounded-1 mb-1">${category.name}</span>`
+
+                const configUlElement = document.createElement('ul')
+                configUlElement.classList.add('list-group', 'bg-transparent', 'overflow-y-auto')
+
+                category.items.forEach(item => {
+                    const configElement = document.createElement('li')
+                    configElement.classList.add('list-group-item', 'd-flex', 'bg-dark-1', 'text-white', 'border-0', 'rounded-2', 'px-1', 'py-2', 'mb-1')
+                    configElement.innerHTML = `
+                            <img src="${item.icon}" width="40" height="40">
+                            <div class="text-start d-flex flex-column ms-2 w-100">
+                                <span>${item.name}</span>
+                                <span>${item.description || ''}</span>
+                            </div>
+                            <div class="d-flex flex-column ms-2 w-100">
+                                <span class="text-end">${item.mode}</span>
+                            </div>
+                        </li>
+                    `
+                    configElement.addEventListener('click', e => {
+                        window?.DtSetConfig?.execute(item.id)
+                        configModal.hide()
+                    })
+                    configUlElement.appendChild(configElement)
+                });
+
+                categoryElement.appendChild(configUlElement)
+                body.appendChild(categoryElement)
+            })
+
+            configModal.show()
+        }
+
+        dtOnNewLogListener()
+        dtVpnStateListener(window?.DtGetVpnState?.execute() ?? 'DISCONNECTED')
+        dtConfigClickListener()
+
+        inputUser.value = window?.DtUsername?.get() ?? ''
+        inputPassword.value = window?.DtPassword?.get() ?? ''
+
+    </script>
+</body>
+
+</html>
